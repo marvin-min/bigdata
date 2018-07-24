@@ -1,4 +1,6 @@
 package com.jarorwar.demo.servlet;
+import com.jarorwar.demo.hdfs.HdfsOperation;
+
 import javax.servlet.AsyncContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,6 +29,11 @@ public class AsyncServlet extends HttpServlet {
 
         out.println("进入Servlet的时间：" + new Date() + ".");
 
+        try {
+            out.println(new HdfsOperation().readFile());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         out.flush();
 
 
