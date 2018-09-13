@@ -32,10 +32,10 @@ public class HdfsOperation {
         System.setProperty("HADOOP_USER_NAME", "marvin");
         try {
             HdfsOperation hdfsOperation = new HdfsOperation();
-//            hdfsOperation.uploadFile();
-//            hdfsOperation.readFile();
-//            hdfsOperation.writeContentToHdfs();
-//            hdfsOperation.close();
+            hdfsOperation.uploadFile();
+            hdfsOperation.readFile();
+            hdfsOperation.writeContentToHdfs();
+            hdfsOperation.close();
             hdfsOperation.stats();
         } catch (Exception e) {
             e.printStackTrace();
@@ -44,7 +44,7 @@ public class HdfsOperation {
 
     public void stats() throws IOException {
         ContentSummary summary = fs.getContentSummary(new Path("/"));
-        System.out.println(summary.getDirectoryCount()+ " -- " +summary.getFileAndDirectoryCount());
+        System.out.println(summary.getDirectoryCount() + " -- " + summary.getFileAndDirectoryCount());
 
     }
 

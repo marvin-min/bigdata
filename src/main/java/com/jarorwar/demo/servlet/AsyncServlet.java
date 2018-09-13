@@ -1,4 +1,5 @@
 package com.jarorwar.demo.servlet;
+
 import com.jarorwar.demo.hdfs.HdfsOperation;
 
 import javax.servlet.AsyncContext;
@@ -14,6 +15,7 @@ import java.util.concurrent.Executor;
 
 /**
  * Copyright by 中旌影视 (c) 2018 Inc.
+ *
  * @描述
  * @Author Administrator
  * @创建时间 2018/7/23/023 11:38
@@ -37,13 +39,11 @@ public class AsyncServlet extends HttpServlet {
         out.flush();
 
 
-
         //在子线程中执行业务调用，并由其负责输出响应，主线程退出
 
         AsyncContext ctx = req.startAsync();
 
         new Thread(new Executor(ctx)).start();
-
 
 
         out.println("结束Servlet的时间：" + new Date() + ".");
@@ -56,15 +56,14 @@ public class AsyncServlet extends HttpServlet {
 
         private AsyncContext ctx = null;
 
-        public Executor(AsyncContext ctx){
+        public Executor(AsyncContext ctx) {
 
             this.ctx = ctx;
 
         }
 
 
-
-        public void run(){
+        public void run() {
 
             try {
 
